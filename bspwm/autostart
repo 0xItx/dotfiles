@@ -1,0 +1,6 @@
+xrandr --output DFP1 --left-of DFP6
+xset m 1 0 && xinput set-prop 10 263 1.7 # Mouse speed
+setxkbmap -option grp:alt_caps_toggle,grp_led:scroll,numpad:microsoft us,il
+xrdb -merge ~/.Xresources
+feh --bg-scale /usr/share/backgrounds/Tesla_by_Tomasino.cz.jpg
+compton -bCG

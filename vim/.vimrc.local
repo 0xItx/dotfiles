@@ -1,0 +1,73 @@
+" Vim Key binds
+vmap <C-S-C> "+y
+nnoremap ` :bnext<CR>
+nnoremap ~ :bprevious<CR>
+set pastetoggle=<F2>
+
+" Vim settings
+set nospell
+set nofoldenable
+set display+=uhex
+set shell=/usr/bin/zsh
+
+" Colors
+colorscheme monokain
+hi Search cterm=reverse ctermbg=235 ctermfg=none
+hi Visual cterm=reverse ctermbg=235 ctermfg=none
+hi PmenuSel ctermfg=81 ctermbg=237
+hi CursorLine cterm=bold
+
+" Airline
+let g:airline_theme="papercolor"
+" HACK: fixes quirk with multiple buffers
+au VimEnter * AirlineToggle
+au VimEnter * AirlineToggle
+
+" BBye
+nnoremap <Leader>qq :Bdelete<CR>
+
+" Tagbar
+let g:tagbar_autofocus=1
+let g:tagbar_autoclose=1
+let g:tagbar_map_nexttag="<C-J>"
+let g:tagbar_map_prevtag="<C-K>"
+
+" YCM
+let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
+let g:ycm_min_num_of_chars_for_completion=1
+
+" UltiSnip
+let g:UltiSnipsExpandTrigger="<nop>"
+let g:ulti_expand_or_jump_res=0
+function! ExpandSnippetOrCarriageReturn()
+    let snippet=UltiSnips#ExpandSnippetOrJump()
+    if g:ulti_expand_or_jump_res > 0
+        return snippet
+    else
+        return "\<CR>"
+    endif
+endfunction
+inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" : "\<CR>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+" Indent Guide
+let g:indent_guides_start_level=1
+let g:indent_guides_auto_colors=0
+au VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=233
+au VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=234
+
+" Signify
+nmap <leader>gj <plug>(signify-next-hunk)
+nmap <leader>gk <plug>(signify-prev-hunk)
+
+" CtrlP
+let g:ctrlp_cmd="CtrlPLastMode"
+let g:ctrlp_working_path_mode="raw"
+
+" NERD Commenter
+nmap <Leader>cx <Plug>NERDCommenterToggle
+
+" Keep clipboard content on exit
+au VimLeave * call system('xsel -ib', getreg('+'))
+

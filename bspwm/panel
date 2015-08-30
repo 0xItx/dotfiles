@@ -1,0 +1,30 @@
+#!/bin/bash
+. ~/.config/bspwm/panelrc
+
+if [ $(pgrep -cx panel) -gt 1 ] ; then
+	exit 1
+fi
+
+trap 'trap - TERM; pkill -P $$' INT TERM QUIT EXIT
+
+# Create identical panel for each monitor
+CURRENT_OFFSET=0
+for monitor in $(bspc query -M)
+do
+    # Create fifo & calculate width per monitor
+    MONITOR_FIFO="$PANEL_FIFO$monitor"
+    MONITOR_WIDTH="$(bspc query -T -m $monitor | grep -Eo "[0-9]{4}" | head -n1)"
+    [ -e "$MONITOR_FIFO" ] && rm "$MONITOR_FIFO"
+    mkfifo "$MONITOR_FIFO"
+
+    bspc config top_padding $PANEL_HEIGHT
+    bspc control --subscribe > "$MONITOR_FIFO" &
+    xtitle -sf 'T%s' > "$MONITOR_FIFO" &
+    clock -sf 'S%a | %b %d | %H:%M' > "$MONITOR_FIFO" &
+
+    # Run lemonbar for $monitor
+    cat "$MONITOR_FIFO" | ~/.config/bspwm/panel_bar | lemonbar -g ${MONITOR_WIDTH}x${PANEL_HEIGHT}+$CURRENT_OFFSET+0 -f "$PANEL_FONT_FAMILY" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" > /dev/null 2>&1 &
+    CURRENT_OFFSET=$((CURRENT_OFFSET + MONITOR_WIDTH))
+done
+
+wait
