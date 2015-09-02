@@ -95,7 +95,7 @@ zstyle ':completion:*:killall:*' command 'ps -u $USER -o cmd'
 bindkey "^K" up-line-or-history
 bindkey "^J" down-line-or-history
 alias cls='printf \\033c'
-tabs 4
+tabs 4 >/dev/null
 
 ####################################################################################
 ####################################################################################
