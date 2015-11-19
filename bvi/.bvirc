@@ -1,0 +1,3 @@
+set memmove
+set ignorecase
+set columns=16

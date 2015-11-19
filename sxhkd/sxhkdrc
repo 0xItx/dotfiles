@@ -5,7 +5,6 @@
 super + alt + Escape
 	bspc quit
 
-# super + shift + q
 alt + shift + q
 	bspc window -c
 

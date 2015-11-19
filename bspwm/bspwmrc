@@ -13,10 +13,7 @@ bspc config focus_by_distance   true
 bspc monitor DFP1 -d 1 2 3 4 5
 bspc monitor DFP6 -d 6 7 8 9 0
 
-bspc rule -a Gimp desktop=^8 follow=on floating=on
-# bspc rule -a Chromium desktop=^2
-bspc rule -a mplayer2 floating=on
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
+bspc rule -a Gimp floating=on
+bspc rule -a qwingraph floating=on
 
 ~/.config/bspwm/panel&

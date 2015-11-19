@@ -44,7 +44,7 @@ HIST_STAMPS="dd.mm.yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git tmux colorize web-search urltools history-substring-search colored-man dircycle sudo encode64 pip zsh-syntax-highlighting)
+plugins=(git colorize web-search urltools history-substring-search colored-man-pages dircycle sudo encode64 pip zsh-syntax-highlighting)
 
 # User configuration
 
@@ -73,6 +73,9 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
+# Ubuntu package search
+source /etc/zsh_command_not_found
+
 ####################################################################################
 ####################################################################################
 # PyEnv
@@ -81,7 +84,7 @@ eval "$(pyenv init -)"
 
 ####################################################################################
 ###################################################################################
-# RbEnv
+# RUBY ENV
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
@@ -109,19 +112,25 @@ alias viconfig="vi ~/.vimrc.local"
 
 ####################################################################################
 ####################################################################################
-# Misc
+# Misc functions & aliases
 help() { run-help $1 }
 ida() { (pyenv archshell 2.7.8_32bit; exec ~/ida/idaq $1)& disown }
 ida64() { (pyenv archshell 2.7.8_32bit; exec ~/ida/idaq64 $1)& disown }
-xo() { xdg-open $1 }
+xo() { local arg; for arg in $*; do xdg-open $arg &; done }
 pylab() { ipython qtconsole --pylab=inline }
-binmeld() { meld <(xxd $1) <(xxd $2) }
+binmeld() { [[ -r $1 && -r $2  ]] && meld <(hd $1) <(hd $2) }
+hdl() { [[ -r $1 ]] && hexdump -C $1 | less }
+gtag() { local repo_base=$(git rev-parse --show-toplevel 2>/dev/null) && [[ -d $repo_base ]] && touch "${repo_base}/.git/tags" }
+chex() { python -c "import re, sys; s = re.sub('\\s+','', ''.join(sys.argv[1:])) ; sys.stdout.write(''.join('\\\x' + s[i:i+2].upper() for i in range(0, len(s), 2)))" $* }
 alias tree="tree -C"
-alias ll="ls -hl"
 alias diff="colordiff"
 alias clrz="colorize"
-alias ctags="ctags -R -a"
-export GCC_COLORS=1
+
+####################################################################################
+####################################################################################
+# Program environment
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on"
 export _JAVA_AWT_WM_NONREPARENTING=1
+export NO_AT_BRIDGE=1
+export GCC_COLORS=1
 

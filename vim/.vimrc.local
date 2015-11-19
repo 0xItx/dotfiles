@@ -23,14 +23,27 @@ let g:airline_theme="papercolor"
 au VimEnter * AirlineToggle
 au VimEnter * AirlineToggle
 
+" Ack.vim
+nnoremap <Leader>fd :Ack<CR>
+let g:ackhighlight=1
+
 " BBye
 nnoremap <Leader>qq :Bdelete<CR>
+nnoremap <Leader>QQ :Bdelete!<CR>
 
 " Tagbar
 let g:tagbar_autofocus=1
 let g:tagbar_autoclose=1
 let g:tagbar_map_nexttag="<C-J>"
 let g:tagbar_map_prevtag="<C-K>"
+
+" EasyTags
+let g:easytags_async=1
+let g:easytags_include_members=1
+let g:easytags_dynamic_files=1
+let g:easytags_python_enabled=1
+let g:easytags_auto_highlight=0
+command Utr UpdateTags -R .
 
 " YCM
 let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
@@ -66,7 +79,7 @@ let g:ctrlp_cmd="CtrlPLastMode"
 let g:ctrlp_working_path_mode="raw"
 
 " NERD Commenter
-nmap <Leader>cx <Plug>NERDCommenterToggle
+map <Leader>cx <Plug>NERDCommenterToggle
 
 " Keep clipboard content on exit
 au VimLeave * call system('xsel -ib', getreg('+'))
