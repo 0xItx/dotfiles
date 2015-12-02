@@ -1,8 +1,7 @@
 " Vim Key binds
-vmap <C-S-C> "+y
-nnoremap ` :bnext<CR>
-nnoremap ~ :bprevious<CR>
-set pastetoggle=<F2>
+vmap <C-C> "+y
+nnoremap <S-L> :bnext<CR>
+nnoremap <S-H> :bprevious<CR>
 
 " Vim settings
 set nospell
@@ -43,7 +42,7 @@ let g:easytags_include_members=1
 let g:easytags_dynamic_files=1
 let g:easytags_python_enabled=1
 let g:easytags_auto_highlight=0
-command Utr UpdateTags -R .
+command! Utr UpdateTags -R .
 
 " YCM
 let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
@@ -63,12 +62,6 @@ endfunction
 inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" : "\<CR>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-
-" Indent Guide
-let g:indent_guides_start_level=1
-let g:indent_guides_auto_colors=0
-au VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=233
-au VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=234
 
 " Signify
 nmap <leader>gj <plug>(signify-next-hunk)
