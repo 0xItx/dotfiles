@@ -93,6 +93,7 @@ eval "$(rbenv init -)"
 # Terminal & shell
 export TERM=xterm-256color
 export EDITOR=vim
+setopt extendedglob nonomatch
 unsetopt sharehistory
 zstyle ':completion:*:killall:*' command 'ps -u $USER -o cmd'
 bindkey "^K" up-line-or-history
