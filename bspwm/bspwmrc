@@ -1,5 +1,4 @@
-#! /bin/sh
-
+#!/bin/sh
 bspc config border_width        1
 bspc config window_gap          0
 bspc config focused_border_color "Deep Sky Blue"
@@ -8,6 +7,7 @@ bspc config urgent_border_color  "Red"
 bspc config split_ratio         0.50
 bspc config borderless_monocle  true
 bspc config gapless_monocle     true
+bspc config leaf_monocle        false
 bspc config focus_by_distance   true
 
 bspc monitor DFP1 -d 1 2 3 4 5
@@ -17,3 +17,4 @@ bspc rule -a Gimp floating=on
 bspc rule -a qwingraph floating=on
 
 ~/.config/bspwm/panel&
+

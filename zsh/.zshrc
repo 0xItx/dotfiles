@@ -130,8 +130,5 @@ alias clrz="colorize"
 ####################################################################################
 ####################################################################################
 # Program environment
-export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on"
-export _JAVA_AWT_WM_NONREPARENTING=1
-export NO_AT_BRIDGE=1
 export GCC_COLORS=1
 

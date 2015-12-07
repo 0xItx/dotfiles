@@ -47,9 +47,6 @@ function on_exit {
 
 trap on_exit EXIT SIGHUP SIGINT SIGTERM
 
-# Direct Qt5 apps to use GTK+ styling:
-export XDG_CURRENT_DESKTOP="XFCE"
-
 # Environment and autostart:
 source_these=(
 	"/etc/profile"

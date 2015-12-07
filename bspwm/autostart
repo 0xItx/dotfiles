@@ -1,6 +1,18 @@
+# Display setup
 xrandr --output DFP1 --left-of DFP6
-xset m 1 0 && xinput set-prop 10 263 1.5 # Mouse speed
+compton -bCG
+
+# Keyboard & Mouse
 setxkbmap -option grp:alt_caps_toggle,grp_led:scroll,numpad:microsoft us,il
+xset m 1 0 && xinput set-prop 10 273 1.4
+
+# X settings
 xrdb -merge ~/.Xresources
 feh --bg-scale /usr/share/backgrounds/Tesla_by_Tomasino.cz.jpg
-compton -bCG
+
+# UI Environment
+export NO_AT_BRIDGE=1
+export QT_STYLE_OVERRIDE="GTK+"
+export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on"
+export _JAVA_AWT_WM_NONREPARENTING=1
+
