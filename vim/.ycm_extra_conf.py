@@ -40,12 +40,18 @@ flags = [
 '-Wno-variadic-macros',
 '-fexceptions',
 '-DNDEBUG',
-'-std=gnu++11',
-'-x=c++',
-'-isystem', '/usr/include',
-'-isystem', '/usr/include/c++/4.9',
-'-isystem', '/usr/local/include',
-# '-I', '.'
+# '-std=gnu++11'
+# '-x',
+# 'c++'
+'-std=gnu11',
+'-x',
+'c',
+'-isystem',
+'/usr/include'
+# '-isystem',
+# '/usr/include/c++/4.9',
+# '-I',
+# '.'
 ]
 
 
