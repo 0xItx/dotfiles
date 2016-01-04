@@ -78,15 +78,14 @@ source /etc/zsh_command_not_found
 
 ####################################################################################
 ####################################################################################
-# PyEnv
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
+# SAS ENV
+source ~/.sas/login.sh
 
-####################################################################################
 ###################################################################################
+##################################################################################
 # RUBY ENV
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
 
 ####################################################################################
 ####################################################################################
@@ -119,16 +118,17 @@ ida() { (pyenv archshell 2.7.8_32bit; exec ~/ida/idaq $1)& disown }
 ida64() { (pyenv archshell 2.7.8_32bit; exec ~/ida/idaq64 $1)& disown }
 xo() { local arg; for arg in $*; do xdg-open $arg &; done }
 pylab() { ipython qtconsole --pylab=inline }
-binmeld() { [[ -r $1 && -r $2  ]] && meld <(hd $1) <(hd $2) }
+bindiff() { [[ -r $1 && -r $2  ]] && vimdiff <(hd $1) <(hd $2) }
 hdl() { [[ -r $1 ]] && hexdump -C $1 | less }
 gtag() { local repo_base=$(git rev-parse --show-toplevel 2>/dev/null) && [[ -d $repo_base ]] && touch "${repo_base}/.git/tags" }
 chex() { python -c "import re, sys; s = re.sub('\\s+','', ''.join(sys.argv[1:])) ; sys.stdout.write(''.join('\\\x' + s[i:i+2].upper() for i in range(0, len(s), 2)))" $* }
 alias tree="tree -C"
 alias diff="colordiff"
 alias clrz="colorize"
+alias agg="ag -fig"
 
 ####################################################################################
 ####################################################################################
 # Program environment
 export GCC_COLORS=1
-
+export LESS="-Ri"

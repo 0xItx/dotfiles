@@ -8,6 +8,7 @@ set nospell
 set nofoldenable
 set display+=uhex
 set shell=/usr/bin/zsh
+set synmaxcol=150
 
 " Colors
 colorscheme monokain
@@ -25,6 +26,7 @@ au VimEnter * AirlineToggle
 " Ack.vim
 nnoremap <Leader>fd :Ack<CR>
 let g:ackhighlight=1
+let g:ack_autoclose=1
 
 " BBye
 nnoremap <Leader>qq :Bdelete<CR>
@@ -42,11 +44,14 @@ let g:easytags_include_members=1
 let g:easytags_dynamic_files=1
 let g:easytags_python_enabled=1
 let g:easytags_auto_highlight=0
-command! Utr UpdateTags -R .
+command! -nargs=1 -complete=file Utr UpdateTags -R <args>
 
 " YCM
 let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
 let g:ycm_min_num_of_chars_for_completion=1
+let g:ycm_key_detailed_diagnostics=''
+nnoremap <Leader>d :YcmCompleter GoTo<CR>
+
 
 " UltiSnip
 let g:UltiSnipsExpandTrigger="<nop>"
