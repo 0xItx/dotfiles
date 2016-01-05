@@ -3,6 +3,7 @@
 #
 
 super + alt + Escape
+	pkill -x panel
 	bspc quit
 
 alt + shift + q
@@ -16,6 +17,9 @@ super + b
 
 super + f
 	bspc window -t floating
+
+super + g
+	bspc window -t tiled
 
 super + {grave,backslash}
 	bspc {monitor,window} -f last
@@ -50,7 +54,7 @@ super + {comma,period}
 	bspc desktop -C {backward,forward}
 
 super + slash
-    bspc desktop -R 90
+	bspc desktop -R 90
 
 super + {_,shift + } bracket{left,right}
 	bspc {desktop -f,window -d} {prev,next}
