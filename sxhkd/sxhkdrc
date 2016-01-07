@@ -32,8 +32,8 @@ super + {o,i}
 	bspc window {older,newer} -f; \
 	bspc control --record-history on
 
-super + y
-	bspc window -w last.manual
+super + p
+	bspc window -w last
 
 super + m
 	bspc window -s biggest
