@@ -19,9 +19,10 @@ MiscHighlightUrls=TRUE
 MiscScrollAlternateScreen=TRUE
 ScrollingLines=32768
 BackgroundDarkness=1.000000
-ColorPalette=#000000000000;#e66600000000;#1a2abae11a2a;#f5c2de740000;#33297bd3ed67;#e1474395e147;#0000bfbfbfbf;#dadadadadada;#652965296529;#e4e43b833b83;#3ac0d99947fa;#e4e4d5c94dd3;#7f7fb4b4f0f0;#e4e47028e4e4;#501de4e4e4e4;#ffffffffffff
+ColorPalette=#000000000000;#e66600000000;#2cbbda1c244c;#f5c2de740000;#3f145fdcd6e8;#e1474395e147;#0000bfbfbfbf;#dadadadadada;#652965296529;#e4e43b833b83;#3ac0d99947fa;#e4e4d5c94dd3;#8cb8b2beddca;#e4e47028e4e4;#501de4e4e4e4;#ffffffffffff
 ColorBackground=#040404040404
 ShortcutsNoMenukey=TRUE
-ScrollingBar=TERMINAL_SCROLLBAR_NONE
 ScrollingOnOutput=FALSE
+ScrollingBar=TERMINAL_SCROLLBAR_NONE
+TitleMode=TERMINAL_TITLE_REPLACE
 

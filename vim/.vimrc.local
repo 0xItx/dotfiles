@@ -24,7 +24,7 @@ au VimEnter * AirlineToggle
 au VimEnter * AirlineToggle
 
 " Ack.vim
-nnoremap <Leader>fd :Ack<CR>
+nnoremap <Leader>fd :Ack!<CR>
 let g:ackhighlight=1
 let g:ack_autoclose=1
 
@@ -78,6 +78,11 @@ let g:ctrlp_working_path_mode="raw"
 
 " NERD Commenter
 map <Leader>cx <Plug>NERDCommenterToggle
+let g:NERDCustomDelimiters={'c': {'leftAlt': '/* ', 'rightAlt': ' */', 'left': '// '}}
+
+" Rainbow
+"let g:rainbow_conf={'ctermfgs': [229, 223]}
+let g:rainbow_active=0
 
 " Keep clipboard content on exit
 au VimLeave * call system('xsel -ib', getreg('+'))
