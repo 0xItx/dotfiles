@@ -13,6 +13,9 @@ super + t
 	bspc desktop -l next
 
 super + b
+	bspc desktop -B
+
+super + e
 	bspc desktop -E
 
 super + f
