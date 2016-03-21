@@ -90,6 +90,7 @@ source ~/.sas/login.sh
 ####################################################################################
 ####################################################################################
 # Terminal & shell
+source /etc/profile.d/vte.sh && __vte_osc7
 export TERM=xterm-256color
 export EDITOR=vim
 setopt extendedglob nonomatch
