@@ -79,6 +79,7 @@ let g:ctrlp_working_path_mode="raw"
 " NERD Commenter
 map <Leader>cx <Plug>NERDCommenterToggle
 let g:NERDCustomDelimiters={'c': {'leftAlt': '/* ', 'rightAlt': ' */', 'left': '// '}}
+let g:NERDSpaceDelims=1
 
 " Rainbow
 "let g:rainbow_conf={'ctermfgs': [229, 223]}
