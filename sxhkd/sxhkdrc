@@ -96,10 +96,10 @@ super + button{8,9}
 #
 
 super + Return
-	xfce4-terminal
+	termite
 
 ctrl + super + Return
-	xfce4-terminal
+	termite
 
 super + space
 	dmenu_run

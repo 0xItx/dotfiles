@@ -114,8 +114,8 @@ alias viconfig="vi ~/.vimrc.local"
 ####################################################################################
 # Misc functions & aliases
 help() { run-help $1 }
-ida() { (pyenv archshell 2.7.8_32bit; exec ~/ida/idaq $1)& disown }
-ida64() { (pyenv archshell 2.7.8_32bit; exec ~/ida/idaq64 $1)& disown }
+ida() { (git bin edit $1; pyenv archshell 2.7.8_32bit; exec ~/ida/idaq $1)& disown }
+ida64() { (git bin edit $1; pyenv archshell 2.7.8_32bit; exec ~/ida/idaq64 $1)& disown }
 xo() { local arg; for arg in $*; do xdg-open $arg &; done }
 pylab() { ipython qtconsole --pylab=inline }
 bindiff() { [[ -r $1 && -r $2  ]] && vimdiff <(hd $1) <(hd $2) }
@@ -125,7 +125,7 @@ chex() { python -c "import re, sys; s = re.sub('\\s+','', ''.join(sys.argv[1:]))
 alias tree="tree -C"
 alias diff="colordiff"
 alias clrz="colorize"
-alias agg="ag -fig"
+alias agg="ag -fuig"
 
 ####################################################################################
 ####################################################################################
