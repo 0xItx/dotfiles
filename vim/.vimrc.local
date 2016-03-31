@@ -1,4 +1,4 @@
-" Vim Key binds
+" Vim key binds
 vmap <C-C> "+y
 nnoremap <S-L> :bnext<CR>
 nnoremap <S-H> :bprevious<CR>
@@ -9,6 +9,9 @@ set nofoldenable
 set display+=uhex
 set shell=/usr/bin/zsh
 set synmaxcol=150
+
+" Vim commands
+command! CopyPath let @+=expand("%:p")
 
 " Colors
 colorscheme monokain
