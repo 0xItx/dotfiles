@@ -1,3 +1,4 @@
 Bundle 'moll/vim-bbye'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-easytags'
+Bundle 'octol/vim-cpp-enhanced-highlight'
