@@ -6,9 +6,9 @@ mouse_autohide = false
 allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
-clickable_url = true
+clickable_url = false
 font = Ubuntu Mono 12
-scrollback_lines = 10000
+scrollback_lines = 50000
 search_wrap = true
 #icon_name = terminal
 #geometry = 640x480
@@ -35,7 +35,7 @@ filter_unmatched_urls = true
 cursor = #0ba53f
 foreground = #ffffff
 foreground_bold = #ffffff
-background = #040404
+background = #000000
 
 # 20% background transparency (requires a compositor)
 #background = rgba(63, 63, 63, 0.8)
