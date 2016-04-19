@@ -12,6 +12,7 @@ set synmaxcol=150
 
 " Vim commands
 command! CopyPath let @+=expand("%:p")
+command! -nargs=1 SS let @/ = '\V'.escape(<q-args>, '/\')|normal! /<C-R>/<CR>
 
 " Colors
 colorscheme monokain
