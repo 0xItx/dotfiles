@@ -90,7 +90,7 @@ source ~/.sas/login.sh
 ####################################################################################
 ####################################################################################
 # Terminal & shell
-source /etc/profile.d/vte.sh && __vte_osc7
+source /etc/profile.d/vte.sh && __vte_osc7 2>/dev/null
 export TERM=xterm-256color
 export EDITOR=vim
 setopt extendedglob nonomatch
@@ -115,8 +115,8 @@ alias viconfig="vi ~/.vimrc.local"
 ####################################################################################
 # Misc functions & aliases
 help() { run-help $1 }
-ida() { (git bin edit $1; pyenv archshell 2.7.8_32bit; exec ~/ida/idaq $1)& disown }
-ida64() { (git bin edit $1; pyenv archshell 2.7.8_32bit; exec ~/ida/idaq64 $1)& disown }
+ida() { (git bin edit $1 >/dev/null; pyenv archshell 2.7.8_32bit; exec ~/ida/idaq $1)& disown }
+ida64() { (git bin edit $1 >/dev/null; pyenv archshell 2.7.8_32bit; exec ~/ida/idaq64 $1)& disown }
 xo() { local arg; for arg in $*; do xdg-open $arg &; done }
 pylab() { ipython qtconsole --pylab=inline }
 bindiff() { [[ -r $1 && -r $2  ]] && vimdiff <(hd $1) <(hd $2) }
