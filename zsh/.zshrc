@@ -46,35 +46,7 @@ HIST_STAMPS="dd.mm.yyyy"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git colorize web-search urltools history-substring-search colored-man-pages dircycle sudo encode64 pip zsh-syntax-highlighting)
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
 source $ZSH/oh-my-zsh.sh
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-
-# Ubuntu package search
-source /etc/zsh_command_not_found
 
 ####################################################################################
 ####################################################################################
@@ -82,7 +54,7 @@ source /etc/zsh_command_not_found
 source ~/.sas/login.sh
 
 ###################################################################################
-##################################################################################
+###################################################################################
 # RUBY ENV
 # export PATH="$HOME/.rbenv/bin:$PATH"
 # eval "$(rbenv init -)"
@@ -90,7 +62,8 @@ source ~/.sas/login.sh
 ####################################################################################
 ####################################################################################
 # Terminal & shell
-source /etc/profile.d/vte.sh && __vte_osc7 2>/dev/null
+{source /etc/profile.d/vte.sh && __vte_osc7} 2>/dev/null
+source /etc/zsh_command_not_found
 export TERM=xterm-256color
 export EDITOR=vim
 setopt extendedglob nonomatch
@@ -117,7 +90,7 @@ alias viconfig="vi ~/.vimrc.local"
 help() { run-help $1 }
 ida() { (git bin edit $1 >/dev/null; pyenv archshell 2.7.8_32bit; exec ~/ida/idaq $1)& disown }
 ida64() { (git bin edit $1 >/dev/null; pyenv archshell 2.7.8_32bit; exec ~/ida/idaq64 $1)& disown }
-xo() { local arg; for arg in $*; do xdg-open $arg &; done }
+xo() { local arg; for arg in "$@"; do xdg-open $arg; done }
 pylab() { ipython qtconsole --pylab=inline }
 bindiff() { [[ -r $1 && -r $2  ]] && vimdiff <(hd $1) <(hd $2) }
 hdl() { [[ -r $1 ]] && hexdump -C $1 | less }

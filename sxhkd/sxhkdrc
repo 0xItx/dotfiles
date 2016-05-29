@@ -3,7 +3,7 @@
 #
 
 super + alt + Escape
-	pkill -x panel
+	pkill -x panel; \
 	bspc quit
 
 alt + shift + q
