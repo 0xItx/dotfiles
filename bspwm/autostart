@@ -4,7 +4,7 @@ compton -CG --backend glx --vsync opengl-swc&
 
 # Keyboard & Mouse
 setxkbmap -option grp:alt_caps_toggle,grp_led:scroll,numpad:microsoft us,il
-xset m 1 0 && xinput set-prop 10 272 1.4
+xset m 1 0 && xinput set-prop 11 272 2
 
 # X settings
 xrdb -merge ~/.Xresources
