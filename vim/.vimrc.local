@@ -4,6 +4,7 @@ nnoremap <S-L> :bnext<CR>
 nnoremap <S-H> :bprevious<CR>
 
 " Vim settings
+set gdefault
 set nospell
 set nofoldenable
 set display+=uhex

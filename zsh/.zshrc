@@ -88,14 +88,16 @@ ida64() { (git bin edit $1 >/dev/null; pyenv archshell 2.7.8_32bit; exec ~/ida/i
 xo() { local arg; for arg in "$@"; do xdg-open $arg; done }
 pylab() { ipython qtconsole --pylab=inline }
 bindiff() { [[ -r $1 && -r $2  ]] && vimdiff <(hd $1) <(hd $2) }
+binmeld() { [[ -r $1 && -r $2  ]] && meld <(hd $1) <(hd $2) }
 hdl() { [[ -r $1 ]] && hexdump -C $1 | less }
 gtag() { local repo_base=$(git rev-parse --show-toplevel 2>/dev/null) && [[ -d $repo_base ]] && touch "${repo_base}/.git/tags" }
 chex() { python -c "import re, sys; s = re.sub('\\s+','', ''.join(sys.argv[1:])) ; sys.stdout.write(''.join('\\\x' + s[i:i+2].upper() for i in range(0, len(s), 2)))" $* }
 alias clrz="colorize"
-alias diff="colordiff"
+alias diff="colordiff -u"
 alias df="df -hT"
 alias tree="tree -C"
 alias agg="ag -fuig"
+alias rlf="readlink -f"
 
 ####################################################################################
 ####################################################################################
