@@ -95,7 +95,7 @@ chex() { python -c "import re, sys; s = re.sub('\\s+','', ''.join(sys.argv[1:]))
 alias clrz="colorize"
 alias diff="colordiff -u"
 alias df="df -hT"
-alias tree="tree -C"
+alias tree="tree -C --du -h"
 alias agg="ag -fuig"
 alias rlf="readlink -f"
 
