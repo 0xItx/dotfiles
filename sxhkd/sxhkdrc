@@ -96,13 +96,13 @@ super + button{8,9}
 #
 
 super + Return
-	termite
+	gnome-terminal
 
 ctrl + super + Return
-	termite
+	gnome-terminal
 
 super + space
-	dmenu_run
+	dmenu_run -fn "-xos4-terminus-medium-r-*-*-16-*"
 
 # make sxhkd reload its configuration files:
 super + Escape

@@ -10,8 +10,7 @@ bspc config gapless_monocle     true
 bspc config leaf_monocle        false
 bspc config focus_by_distance   true
 
-bspc monitor DisplayPort-0 -d 1 2 3 4 5
-bspc monitor DVI-0 -d 6 7 8 9 0
+bspc monitor DP3 -d 1 2 3 4 5
 
 bspc rule -a gimp state=floating
 bspc rule -a qwingraph state=floating

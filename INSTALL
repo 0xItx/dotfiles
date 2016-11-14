@@ -1,0 +1,14 @@
+# dmenu/lemonbar font
+apt-get install xfonts-terminus && xset fp rehash
+
+# lemonbar + requirements
+git clone https://github.com/baskerville/sutils
+git clone https://github.com/baskerville/xtitle
+git clone https://github.com/LemonBoy/bar
+
+# sxhkd
+git clone https://github.com/0xItx/sxhkd
+
+# bspwm
+git clone https://github.com/0xItx/sxhkd
+

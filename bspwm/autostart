@@ -8,12 +8,13 @@ xset m 1 0 && xinput set-prop 11 272 2
 
 # X settings
 xrdb -merge ~/.Xresources
-feh --bg-scale /usr/share/backgrounds/Tesla_by_Tomasino.cz.jpg
+feh --bg-scale /usr/share/backgrounds/Abstract_Ubuntu_by_Marek_Koteluk.jpg
 
 # UI Environment
 export NO_AT_BRIDGE=1
 export XDG_CURRENT_DESKTOP="XFCE"
 export QT_STYLE_OVERRIDE="gtk"
+export GTK_OVERLAY_SCROLLING=0
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
 export _JAVA_AWT_WM_NONREPARENTING=1
 
