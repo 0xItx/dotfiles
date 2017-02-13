@@ -2,6 +2,8 @@
 vmap <C-C> "+y
 nnoremap <S-L> :bnext<CR>
 nnoremap <S-H> :bprevious<CR>
+nnoremap <BSlash> :ls<CR>:b<Space>
+map <F1> <nop>
 
 " Vim settings
 set gdefault
@@ -24,8 +26,10 @@ hi CursorLine cterm=bold
 
 " Airline
 let g:airline_theme="papercolor"
+" let g:airline_left_sep="\uE0d2"
 let g:airline_left_sep=""
 let g:airline_left_alt_sep="»"
+" let g:airline_right_sep="\uE0d4"
 let g:airline_right_sep=""
 let g:airline_right_alt_sep="«"
 let g:airline_section_z="%4l/%L: %2v"
@@ -83,3 +87,5 @@ let g:rainbow_active=0
 " Keep clipboard content on exit
 au VimLeave * call system('xsel -ib', getreg('+'))
 
+" Man pages
+set keywordprg=:Man
