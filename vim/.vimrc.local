@@ -10,7 +10,7 @@ set gdefault
 set nospell
 set nofoldenable
 set display+=uhex
-set shell=/usr/bin/zsh
+set shell=$SHELL
 set synmaxcol=150
 
 " Vim commands
