@@ -3,6 +3,7 @@ vmap <C-C> "+y
 nnoremap <S-L> :bnext<CR>
 nnoremap <S-H> :bprevious<CR>
 nnoremap <BSlash> :ls<CR>:b<Space>
+nnoremap <Leader>rw :%s/\<<C-r><C-w>\>/
 map <F1> <nop>
 
 " Vim settings
