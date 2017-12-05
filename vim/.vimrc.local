@@ -12,7 +12,7 @@ set nospell
 set nofoldenable
 set display+=uhex
 set shell=$SHELL
-set synmaxcol=150
+set synmaxcol=250
 
 " Vim commands
 command! CopyPath let @+=expand("%:p")
@@ -64,6 +64,7 @@ command! -nargs=1 -complete=file Utr UpdateTags -R <args>
 " YCM
 let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
 let g:ycm_min_num_of_chars_for_completion=1
+let g:ycm_enable_diagnostic_highlighting=0
 let g:ycm_key_detailed_diagnostics=''
 nnoremap <Leader>d :YcmCompleter GoTo<CR>
 
@@ -81,12 +82,15 @@ map <Leader>cx <Plug>NERDCommenterToggle
 let g:NERDCustomDelimiters={'c': {'leftAlt': '/*', 'rightAlt': '*/', 'left': '//'}}
 let g:NERDSpaceDelims=1
 
-" Rainbow
-"let g:rainbow_conf={'ctermfgs': [229, 223]}
-let g:rainbow_active=0
+" closetag
+let g:closetag_filenames = '*.htm,*.html,*.xhtml,*.phtml,*.xml,*.plist'
 
 " Keep clipboard content on exit
-au VimLeave * call system('xsel -ib', getreg('+'))
+" au VimLeave * call system('xsel -ib', getreg('+'))
 
 " Man pages
 set keywordprg=:Man
+
+" PyMode - temporarily disasbled
+let g:pymode=0
+let g:pymode_lint=0
