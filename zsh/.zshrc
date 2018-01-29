@@ -51,12 +51,12 @@ source $ZSH/oh-my-zsh.sh
 ###################################################################################
 ###################################################################################
 # MAC ENV
-export PATH="$HOME/bin:/opt/local/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 
 ###################################################################################
 ###################################################################################
 # PYTHON ENV
-export PATH="$HOME/Library/Python/2.7/bin:$PATH"
+export PATH="$HOME/Library/Python/2.7/bin:/usr/local/bin:$PATH"
 
 ###################################################################################
 ###################################################################################
@@ -93,8 +93,9 @@ alias viconfig="vi ~/.vimrc.local"
 ####################################################################################
 # Misc functions & aliases
 help() { run-help $1 }
-ida32() { /Applications/IDA\ Pro\ 6.9/idaq.app/Contents/MacOS/idaq $@ &; disown }
-ida64() { /Applications/IDA\ Pro\ 6.9/idaq64.app/Contents/MacOS/idaq64 $@ &; disown }
+ida32() {"/Applications/IDA Pro 7.0/ida64.app/Contents/MacOS/ida" $@ >/dev/null 2>&1 &; disown }
+ida64() {"/Applications/IDA Pro 7.0/ida64.app/Contents/MacOS/ida64" $@ >/dev/null 2>&1 &; disown }
+
 xo() { local arg; for arg in "$@"; do xdg-open $arg; done }
 pylab() { ipython qtconsole --pylab=inline }
 bindiff() { [[ -r $1 && -r $2  ]] && vimdiff <(hd $1) <(hd $2) }
@@ -110,6 +111,7 @@ alias tree="tree -C --du -h"
 alias agg="ag -fuig"
 alias rlf="readlink -f"
 alias hexfiend="'/Applications/Hex Fiend.app/Contents/MacOS/Hex Fiend'"
+keynote_hl() { highlight --font-size 36 --font "Monaco" --style xoria256 --syntax $1 -O rtf | pbcopy }
 
 ####################################################################################
 ####################################################################################
@@ -120,6 +122,8 @@ export LESS="-Ri"
 ####################################################################################
 ####################################################################################
 # iOS stuff
-alias udid="idevice_id -l"
 alias csident="security find-identity -p codesigning -v"
+alias pluto="plistutil -i"
+function udid() { for udid in $(idevice_id -l); do echo -e "\n$udid"; ideviceinfo -u $udid | ag --nocolor "Version|ProductType"; done }
 function thin64() { lipo -thin arm64 $1 -o $2 }
+function symbolicatecrash() { DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer /Applications/Xcode-beta.app/Contents/SharedFrameworks/DVTFoundation.framework/Versions/Current/Resources/symbolicatecrash  $1 }
