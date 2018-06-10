@@ -97,13 +97,12 @@ ida32() {"/Applications/IDA Pro 7.1/ida64.app/Contents/MacOS/ida" $@ >/dev/null 
 ida64() {"/Applications/IDA Pro 7.1/ida64.app/Contents/MacOS/ida64" $@ >/dev/null 2>&1 &; disown }
 
 xo() { local arg; for arg in "$@"; do xdg-open $arg; done }
-pylab() { ipython qtconsole --pylab=inline }
-bindiff() { [[ -r $1 && -r $2  ]] && vimdiff <(hd $1) <(hd $2) }
-binmeld() { [[ -r $1 && -r $2  ]] && meld <(hd $1) <(hd $2) }
 hd() { hexdump -C $@ }
 hdl() { [[ -r $1 ]] && hexdump -C $1 | less }
 gtag() { local repo_base=$(git rev-parse --show-toplevel 2>/dev/null) && [[ -d $repo_base ]] && touch "${repo_base}/.git/tags" }
 chex() { python -c "import re, sys; s = re.sub('\\s+','', ''.join(sys.argv[1:])) ; sys.stdout.write(''.join('\\\x' + s[i:i+2].upper() for i in range(0, len(s), 2)))" $* }
+dis() { objdump -disassemble $1 }
+
 alias clrz="colorize"
 alias diff="colordiff -u"
 alias df="df -h"
@@ -124,6 +123,6 @@ export LESS="-Ri"
 # iOS stuff
 alias csident="security find-identity -p codesigning -v"
 alias pluto="plistutil -i"
-function udid() { for udid in $(idevice_id -l); do echo -e "\n$udid"; ideviceinfo -u $udid | ag --nocolor "Version|ProductType"; done }
+function udid() { for udid in $(idevice_id -l); do echo -e "\n$udid"; ideviceinfo -u $udid | ag --nocolor "BuildVersion|ProductVersion|ProductType|DeviceName"; done }
 function thin64() { lipo -thin arm64 $1 -o $2 }
 function symbolicatecrash() { DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer /Applications/Xcode-beta.app/Contents/SharedFrameworks/DVTFoundation.framework/Versions/Current/Resources/symbolicatecrash  $1 }

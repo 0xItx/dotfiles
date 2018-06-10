@@ -1,0 +1,9 @@
+set clipboard+=unnamed
+set gdefault
+set ignorecase
+set showmode
+
+nmap Y y$
+nmap go :action GotoImplementation<CR>
+nmap ]c :action VcsShowNextChangeMarker<CR>
+nmap [c :action VcsShowPrevChangeMarker<CR>
