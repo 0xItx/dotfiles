@@ -67,9 +67,6 @@ export PATH="$HOME/Library/Python/2.7/bin:/usr/local/bin:$PATH"
 ####################################################################################
 ####################################################################################
 # Terminal & shell
-{source /etc/profile.d/vte.sh && __vte_osc7} 2>/dev/null
-#source /etc/zsh_command_not_found
-#export TERM=xterm
 export EDITOR=vim
 setopt extendedglob nonomatch
 unsetopt sharehistory
@@ -78,6 +75,7 @@ bindkey "^K" history-substring-search-up
 bindkey "^J" history-substring-search-down
 alias cls='printf \\033c'
 tabs 4 >/dev/null
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ####################################################################################
 ####################################################################################
@@ -103,7 +101,7 @@ gtag() { local repo_base=$(git rev-parse --show-toplevel 2>/dev/null) && [[ -d $
 chex() { python -c "import re, sys; s = re.sub('\\s+','', ''.join(sys.argv[1:])) ; sys.stdout.write(''.join('\\\x' + s[i:i+2].upper() for i in range(0, len(s), 2)))" $* }
 dis() { objdump -disassemble $1 }
 
-alias clrz="colorize"
+alias cat="bat --paging=never"
 alias diff="colordiff -u"
 alias df="df -h"
 alias tree="tree -C --du -h"
