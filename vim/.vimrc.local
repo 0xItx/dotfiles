@@ -1,5 +1,7 @@
 " Vim key binds
-vmap <C-C> "+y
+vmap <C-c> "+y
+nmap <C-a> ggvG
+noremap c "_c
 nnoremap <S-L> :bnext<CR>
 nnoremap <S-H> :bprevious<CR>
 nnoremap <BSlash> :ls<CR>:b<Space>
@@ -34,8 +36,8 @@ let g:airline_right_sep=""
 let g:airline_right_alt_sep="«"
 let g:airline_section_z="%4l/%L: %2v"
 " HACK: fixes quirk with multiple buffers
-" au VimEnter * AirlineToggle
-" au VimEnter * AirlineToggle
+au VimEnter * AirlineToggle
+au VimEnter * AirlineToggle
 
 " Ack.vim
 nnoremap <Leader>fd :Ack!<CR>
@@ -90,6 +92,9 @@ let g:closetag_filenames = '*.htm,*.html,*.xhtml,*.phtml,*.xml,*.plist'
 " Man pages
 set keywordprg=:Man
 
-" PyMode - temporarily disasbled
-let g:pymode=0
+" PyMode
+let g:pymode=1
 let g:pymode_lint=0
+
+" Rainbow Parentheses
+let g:rainbow_conf = { 'ctermfgs': ['171', '160', '208'] }

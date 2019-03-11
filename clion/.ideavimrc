@@ -4,6 +4,7 @@ set ignorecase
 set showmode
 
 nmap Y y$
+noremap c "_c
 nmap go :action GotoImplementation<CR>
 nmap ]c :action VcsShowNextChangeMarker<CR>
 nmap [c :action VcsShowPrevChangeMarker<CR>
