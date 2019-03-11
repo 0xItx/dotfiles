@@ -1,0 +1,11 @@
+[user]
+	name = Itay R
+	email = 
+[rebase]
+	stat = true
+	autostash = true
+[diff]
+	renames = true
+[pager]
+	branch = false
+	config = false
