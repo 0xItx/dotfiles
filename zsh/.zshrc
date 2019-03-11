@@ -101,7 +101,7 @@ gtag() { local repo_base=$(git rev-parse --show-toplevel 2>/dev/null) && [[ -d $
 chex() { python -c "import re, sys; s = re.sub('\\s+','', ''.join(sys.argv[1:])) ; sys.stdout.write(''.join('\\\x' + s[i:i+2].upper() for i in range(0, len(s), 2)))" $* }
 dis() { objdump -disassemble $1 }
 
-alias cat="bat --paging=never"
+alias cat="bat --paging=never -p"
 alias diff="colordiff -u"
 alias df="df -h"
 alias tree="tree -C --du -h"
