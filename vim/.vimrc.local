@@ -2,6 +2,7 @@
 vmap <C-c> "+y
 nmap <C-a> ggvG
 noremap c "_c
+noremap C "_C
 nnoremap <S-L> :bnext<CR>
 nnoremap <S-H> :bprevious<CR>
 nnoremap <BSlash> :ls<CR>:b<Space>
