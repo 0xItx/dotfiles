@@ -1,0 +1,7 @@
+Host localhost
+    StrictHostKeyChecking  no
+    UserKnownHostsFile     /dev/null
+
+Host *
+    ServerAliveInterval 10
+    ServerAliveCountMax 30
