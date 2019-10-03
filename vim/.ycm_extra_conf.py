@@ -53,9 +53,9 @@ def FlagsForFile( filename, **kwargs ):
     final_flags = MakeRelativePathsInFlagsAbsolute(flags, relative_to)
 
     if filename.endswith('.c'):
-        final_flags += ['-xc', '-std=gnu11']
+        final_flags += ['-xc', '-std=gnu17']
     elif filename.endswith('.cpp'):
-        final_flags += ['-xc++', '-std=gnu++11']
+        final_flags += ['-xc++', '-std=gnu++17']
 
     return {
         'flags': final_flags,

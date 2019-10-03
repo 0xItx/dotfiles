@@ -91,8 +91,8 @@ alias viconfig="vi ~/.vimrc.local"
 ####################################################################################
 # Misc functions & aliases
 help() { run-help $1 }
-ida32() {"/Applications/IDA Pro 7.1/ida64.app/Contents/MacOS/ida" $@ >/dev/null 2>&1 &; disown }
-ida64() {"/Applications/IDA Pro 7.1/ida64.app/Contents/MacOS/ida64" $@ >/dev/null 2>&1 &; disown }
+ida64() {"/Applications/IDA Pro 7.3/ida64.app/Contents/MacOS/ida64" $@ </dev/null &>/dev/null  &; disown }
+ida71() {"/Applications/IDA Pro 7.1/ida64.app/Contents/MacOS/ida64" $@ </dev/null &>/dev/null  &; disown }
 
 xo() { local arg; for arg in "$@"; do xdg-open $arg; done }
 hd() { hexdump -C $@ }
