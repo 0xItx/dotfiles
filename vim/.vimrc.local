@@ -1,6 +1,5 @@
 " Vim key binds
 vmap <C-c> "+y
-nmap <C-a> ggvG
 noremap c "_c
 noremap C "_C
 nnoremap <S-L> :bnext<CR>
@@ -52,7 +51,7 @@ nnoremap <Leader>QQ :Bdelete!<CR>
 
 " Tagbar
 let g:tagbar_autofocus=1
-let g:tagbar_autoclose=1
+let g:tagbar_autoclose=0
 let g:tagbar_map_nexttag="<C-J>"
 let g:tagbar_map_prevtag="<C-K>"
 
@@ -71,7 +70,7 @@ map <leader><Leader>K <Plug>(easymotion-eol-k)
 " YCM
 let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
 let g:ycm_min_num_of_chars_for_completion=1
-let g:ycm_enable_diagnostic_highlighting=0
+let g:ycm_show_diagnostics_ui=0
 let g:ycm_key_detailed_diagnostics=''
 nnoremap <Leader>d :YcmCompleter GoTo<CR>
 

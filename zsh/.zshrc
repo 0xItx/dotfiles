@@ -71,11 +71,12 @@ export EDITOR=vim
 setopt extendedglob nonomatch
 unsetopt sharehistory
 zstyle ':completion:*:killall:*' command 'ps -u $USER -o cmd'
+autoload -U zmv
 bindkey "^K" history-substring-search-up
 bindkey "^J" history-substring-search-down
 alias cls='printf \\033c'
 tabs 4 >/dev/null
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && { source ~/.fzf.zsh ; export FZF_COMPLETION_TRIGGER='``' }
 
 ####################################################################################
 ####################################################################################
@@ -91,8 +92,7 @@ alias viconfig="vi ~/.vimrc.local"
 ####################################################################################
 # Misc functions & aliases
 help() { run-help $1 }
-ida64() {"/Applications/IDA Pro 7.3/ida64.app/Contents/MacOS/ida64" $@ </dev/null &>/dev/null  &; disown }
-ida71() {"/Applications/IDA Pro 7.1/ida64.app/Contents/MacOS/ida64" $@ </dev/null &>/dev/null  &; disown }
+mcd() { mkdir -p $1 && cd $1 }
 
 xo() { local arg; for arg in "$@"; do xdg-open $arg; done }
 hd() { hexdump -C $@ }
@@ -100,7 +100,9 @@ hdl() { [[ -r $1 ]] && hexdump -C $1 | less }
 gtag() { local repo_base=$(git rev-parse --show-toplevel 2>/dev/null) && [[ -d $repo_base ]] && touch "${repo_base}/.git/tags" }
 chex() { python -c "import re, sys; s = re.sub('\\s+','', ''.join(sys.argv[1:])) ; sys.stdout.write(''.join('\\\x' + s[i:i+2].upper() for i in range(0, len(s), 2)))" $* }
 dis() { objdump -disassemble $1 }
+ida64() {"/Applications/IDA Pro 7.4/ida64.app/Contents/MacOS/ida64" $@ </dev/null &>/dev/null &; disown %% }
 
+alias lld="ls -ld"
 alias cat="bat --paging=never -p"
 alias diff="colordiff -u"
 alias df="df -h"
@@ -123,4 +125,4 @@ alias csident="security find-identity -p codesigning -v"
 alias pluto="plistutil -i"
 function udid() { for udid in $(idevice_id -l); do echo -e "\n$udid"; ideviceinfo -u $udid | ag --nocolor "BuildVersion|ProductVersion|ProductType|DeviceName"; done }
 function thin64() { lipo -thin arm64 $1 -o $2 }
-function symbolicatecrash() { DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer /Applications/Xcode-beta.app/Contents/SharedFrameworks/DVTFoundation.framework/Versions/Current/Resources/symbolicatecrash  $1 }
+function symbolicatecrash() { DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer /Applications/Xcode-beta.app/Contents/SharedFrameworks/DVTFoundation.framework/Versions/Current/Resources/symbolicatecrash  $@ }

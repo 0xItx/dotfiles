@@ -9,3 +9,6 @@ noremap C "_C
 nmap go :action GotoImplementation<CR>
 nmap ]c :action VcsShowNextChangeMarker<CR>
 nmap [c :action VcsShowPrevChangeMarker<CR>
+nmap <C-h> :action TypeHierarchy<CR>
+set ideajoin
+set surround
