@@ -81,7 +81,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " CtrlP
 let g:ctrlp_cmd="CtrlPLastMode"
-let g:ctrlp_working_path_mode="raw"
+let g:ctrlp_working_path_mode="a"
 
 " NERD Commenter
 map <Leader>cx <Plug>NERDCommenterToggle
