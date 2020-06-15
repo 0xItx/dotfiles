@@ -67,12 +67,10 @@ command! -nargs=1 -complete=file Utr UpdateTags -R <args>
 map <leader><Leader>J <Plug>(easymotion-eol-j)
 map <leader><Leader>K <Plug>(easymotion-eol-k)
 
-" YCM
-let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
-let g:ycm_min_num_of_chars_for_completion=1
-let g:ycm_show_diagnostics_ui=0
-let g:ycm_key_detailed_diagnostics=''
-nnoremap <Leader>d :YcmCompleter GoTo<CR>
+" deoplete
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
+call deoplete#custom#option('min_pattern_length', 1)
 
 " UltiSnip
 let g:UltiSnipsExpandTrigger="<c-j>"
