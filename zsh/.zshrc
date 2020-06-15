@@ -76,7 +76,7 @@ bindkey "^K" history-substring-search-up
 bindkey "^J" history-substring-search-down
 alias cls='printf \\033c'
 tabs 4 >/dev/null
-[ -f ~/.fzf.zsh ] && { source ~/.fzf.zsh ; export FZF_COMPLETION_TRIGGER='``' }
+[ -f ~/.fzf.zsh ] && { source ~/.fzf.zsh ; export FZF_COMPLETION_TRIGGER='``' ; bindkey "^F" fzf-cd-widget }
 
 ####################################################################################
 ####################################################################################
