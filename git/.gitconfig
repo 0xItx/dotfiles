@@ -9,3 +9,5 @@
 [pager]
 	branch = false
 	config = false
+[advice]
+	detachedHead = 0

@@ -56,7 +56,7 @@ export PATH="$HOME/bin:$PATH"
 ###################################################################################
 ###################################################################################
 # PYTHON ENV
-export PATH="$HOME/Library/Python/2.7/bin:/usr/local/bin:$PATH"
+export PATH="$HOME/Library/Python/3.7/bin:$HOME/Library/Python/2.7/bin:$PATH"
 
 ###################################################################################
 ###################################################################################
@@ -98,18 +98,20 @@ xo() { local arg; for arg in "$@"; do xdg-open $arg; done }
 hd() { hexdump -C $@ }
 hdl() { [[ -r $1 ]] && hexdump -C $1 | less }
 gtag() { local repo_base=$(git rev-parse --show-toplevel 2>/dev/null) && [[ -d $repo_base ]] && touch "${repo_base}/.git/tags" }
-chex() { python -c "import re, sys; s = re.sub('\\s+','', ''.join(sys.argv[1:])) ; sys.stdout.write(''.join('\\\x' + s[i:i+2].upper() for i in range(0, len(s), 2)))" $* }
-dis() { objdump -disassemble $1 }
-ida64() {"/Applications/IDA Pro 7.4/ida64.app/Contents/MacOS/ida64" $@ </dev/null &>/dev/null &; disown %% }
+chex() { python -c "import re, sys; s = re.sub('\\s+','', ''.join(sys.argv[1:])) if len(sys.argv) >= 2 else sys.stdin.read().encode('hex'); sys.stdout.write(''.join('\\\x' + s[i:i+2].upper() for i in range(0, len(s), 2)))" $* }
+dis() { objdump --macho --x86-asm-syntax intel -d $1 }
+ida64() {"/Applications/IDA Pro 7.5/ida64.app/Contents/MacOS/ida64" $@ </dev/null &>/dev/null &; disown %% }
 
 alias lld="ls -ld"
 alias cat="bat --paging=never -p"
 alias diff="colordiff -u"
 alias df="df -h"
+alias rsync="rsync -Ph"
 alias tree="tree -C --du -h"
 alias agg="ag -fuig"
 alias rlf="readlink -f"
-alias hexfiend="'/Applications/Hex Fiend.app/Contents/MacOS/Hex Fiend'"
+alias nst="netstat -rn | less"
+alias sha="shasum -a256"
 keynote_hl() { highlight --font-size 36 --font "Monaco" --style xoria256 --syntax $1 -O rtf | pbcopy }
 
 ####################################################################################
