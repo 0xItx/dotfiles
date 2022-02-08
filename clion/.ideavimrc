@@ -12,3 +12,4 @@ nmap [c :action VcsShowPrevChangeMarker<CR>
 nmap <C-h> :action TypeHierarchy<CR>
 set ideajoin
 set surround
+set visualbell

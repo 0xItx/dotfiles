@@ -36,6 +36,8 @@ ZSH_THEME="robbyrussell"
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="dd.mm.yyyy"
+HISTSIZE=99999999
+SAVEHIST=99999999
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -56,7 +58,7 @@ export PATH="$HOME/bin:$PATH"
 ###################################################################################
 ###################################################################################
 # PYTHON ENV
-export PATH="$HOME/Library/Python/3.7/bin:$HOME/Library/Python/2.7/bin:$PATH"
+export PATH="$HOME/Library/Python/3.8/bin:$HOME/Library/Python/2.7/bin:$PATH"
 
 ###################################################################################
 ###################################################################################
@@ -97,17 +99,19 @@ mcd() { mkdir -p $1 && cd $1 }
 xo() { local arg; for arg in "$@"; do xdg-open $arg; done }
 hd() { hexdump -C $@ }
 hdl() { [[ -r $1 ]] && hexdump -C $1 | less }
-gtag() { local repo_base=$(git rev-parse --show-toplevel 2>/dev/null) && [[ -d $repo_base ]] && touch "${repo_base}/.git/tags" }
+# gtag() { local repo_base=$(git rev-parse --show-toplevel 2>/dev/null) && [[ -d $repo_base ]] && touch "${repo_base}/.git/tags" }
 chex() { python -c "import re, sys; s = re.sub('\\s+','', ''.join(sys.argv[1:])) if len(sys.argv) >= 2 else sys.stdin.read().encode('hex'); sys.stdout.write(''.join('\\\x' + s[i:i+2].upper() for i in range(0, len(s), 2)))" $* }
-dis() { objdump --macho --x86-asm-syntax intel -d $1 }
-ida64() {"/Applications/IDA Pro 7.5/ida64.app/Contents/MacOS/ida64" $@ </dev/null &>/dev/null &; disown %% }
+dis() { [[ -r $1 ]] && { objdump --macho --x86-asm-syntax intel -d $1 | less; }}
+asm() { as -arch arm64e -o /dev/stdout <<< "$(echo -e $*)" | objdump -d --macho /dev/stdin }
+ida64() { "/Applications/IDA Pro 7.6/ida64.app/Contents/MacOS/ida64" $@ </dev/null &>/dev/null &! }
 
 alias lld="ls -ld"
+alias llr="ls -lrt"
 alias cat="bat --paging=never -p"
 alias diff="colordiff -u"
 alias df="df -h"
-alias rsync="rsync -Ph"
-alias tree="tree -C --du -h"
+alias rsync="rsync -Pha"
+alias tree="tree -C -h"
 alias agg="ag -fuig"
 alias rlf="readlink -f"
 alias nst="netstat -rn | less"
@@ -122,9 +126,20 @@ export LESS="-Ri"
 
 ####################################################################################
 ####################################################################################
-# iOS stuff
-alias csident="security find-identity -p codesigning -v"
-alias pluto="plistutil -i"
-function udid() { for udid in $(idevice_id -l); do echo -e "\n$udid"; ideviceinfo -u $udid | ag --nocolor "BuildVersion|ProductVersion|ProductType|DeviceName"; done }
-function thin64() { lipo -thin arm64 $1 -o $2 }
-function symbolicatecrash() { DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer /Applications/Xcode-beta.app/Contents/SharedFrameworks/DVTFoundation.framework/Versions/Current/Resources/symbolicatecrash  $@ }
+# Task management
+alias t="task"
+alias ta="task add"
+alias tap="task add pri:H"
+alias tal="task add pri:L"
+alias tm="task modify"
+alias td="task done"
+alias tu="task undo"
+alias tn="task newest"
+alias tj="task annotate"
+alias tjd="task denotate"
+
+
+####################################################################################
+####################################################################################
+# Work-specific stuff
+source ~/.zshrc.work

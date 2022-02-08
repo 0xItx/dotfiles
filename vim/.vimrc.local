@@ -82,7 +82,7 @@ let g:ctrlp_cmd="CtrlPLastMode"
 let g:ctrlp_working_path_mode="a"
 
 " NERD Commenter
-map <Leader>cx <Plug>NERDCommenterToggle
+map <Leader>cx <Plug>NERDCommenterInvert
 let g:NERDCustomDelimiters={'c': {'leftAlt': '/*', 'rightAlt': '*/', 'left': '//'}}
 let g:NERDSpaceDelims=1
 

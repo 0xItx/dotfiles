@@ -6,8 +6,11 @@
 	autostash = true
 [diff]
 	renames = true
+	tool = bc
 [pager]
 	branch = false
 	config = false
 [advice]
 	detachedHead = 0
+[icdiff]
+	options = --line

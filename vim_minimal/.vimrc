@@ -12,6 +12,7 @@ set gdefault
 set number
 set ruler
 set wildmenu
+set showcmd
 
 set display=uhex
 
