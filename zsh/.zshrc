@@ -58,7 +58,8 @@ export PATH="$HOME/bin:$PATH"
 ###################################################################################
 ###################################################################################
 # PYTHON ENV
-export PATH="$HOME/Library/Python/3.8/bin:$HOME/Library/Python/2.7/bin:$PATH"
+export PATH="$HOME/Library/Python/3.9/bin:$PATH"
+export PYTHONDONTWRITEBYTECODE=1
 
 ###################################################################################
 ###################################################################################
@@ -100,13 +101,13 @@ xo() { local arg; for arg in "$@"; do xdg-open $arg; done }
 hd() { hexdump -C $@ }
 hdl() { [[ -r $1 ]] && hexdump -C $1 | less }
 # gtag() { local repo_base=$(git rev-parse --show-toplevel 2>/dev/null) && [[ -d $repo_base ]] && touch "${repo_base}/.git/tags" }
-chex() { python -c "import re, sys; s = re.sub('\\s+','', ''.join(sys.argv[1:])) if len(sys.argv) >= 2 else sys.stdin.read().encode('hex'); sys.stdout.write(''.join('\\\x' + s[i:i+2].upper() for i in range(0, len(s), 2)))" $* }
-dis() { [[ -r $1 ]] && { objdump --macho --x86-asm-syntax intel -d $1 | less; }}
-asm() { as -arch arm64e -o /dev/stdout <<< "$(echo -e $*)" | objdump -d --macho /dev/stdin }
-ida64() { "/Applications/IDA Pro 7.6/ida64.app/Contents/MacOS/ida64" $@ </dev/null &>/dev/null &! }
+chex() { python -c "import re, sys; s = re.sub('\\s+','', ''.join(sys.argv[1:])) if len(sys.argv) >= 2 else sys.stdin.buffer.read().hex(); sys.stdout.write(''.join('\\\x' + s[i:i+2].upper() for i in range(0, len(s), 2)))" $* }
+dis() { [[ -r $1 ]] && { objdump --macho -d $1 | less; }}
+asm() { as -arch arm64e -o /dev/stdout <<< $(echo -e $*) | objdump -d --macho /dev/stdin }
+ida64() { "/Applications/IDA Pro 7.7/ida64.app/Contents/MacOS/ida64" $@ </dev/null &>/dev/null &! }
 
 alias lld="ls -ld"
-alias llr="ls -lrt"
+alias llr="ls -lhrt"
 alias cat="bat --paging=never -p"
 alias diff="colordiff -u"
 alias df="df -h"
@@ -142,4 +143,4 @@ alias tjd="task denotate"
 ####################################################################################
 ####################################################################################
 # Work-specific stuff
-source ~/.zshrc.work
+[ -f ~/.zshrc.work ] && source ~/.zshrc.work
