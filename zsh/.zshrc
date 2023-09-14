@@ -53,7 +53,7 @@ source $ZSH/oh-my-zsh.sh
 ###################################################################################
 ###################################################################################
 # MAC ENV
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin:/opt/homebrew/bin:$PATH"
 
 ###################################################################################
 ###################################################################################
@@ -70,6 +70,8 @@ export PYTHONDONTWRITEBYTECODE=1
 ####################################################################################
 ####################################################################################
 # Terminal & shell
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US.UTF-8"
 export EDITOR=vim
 setopt extendedglob nonomatch
 unsetopt sharehistory
@@ -124,6 +126,7 @@ keynote_hl() { highlight --font-size 36 --font "Monaco" --style xoria256 --synta
 # Program environment
 export GCC_COLORS=1
 export LESS="-Ri"
+export BAT_THEME="Monokai Extended Origin"
 
 ####################################################################################
 ####################################################################################
